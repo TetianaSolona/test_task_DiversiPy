@@ -70,8 +70,8 @@ class Circle(Shape):
 
     def validate_input(self, center_x, center_y, radius):
         super().validate_input(center_x, center_y, radius)
-        if radius == 0:
-            raise ValueError("Radius cannot be zero")
+        if radius == 0 or radius < 0:
+            raise ValueError("Radius cannot be zero or negative")
 
     def calculate_perimeter(self):
         result = 2 * math.pi * self.radius

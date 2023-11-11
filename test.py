@@ -49,20 +49,18 @@ class TestShapes(unittest.TestCase):
         self.assertAlmostEqual(triangle_float_point.calculate_area(), 51.15, places=2)
 
     def test_invalid_shape(self):
-        with self.assertRaises(ValueError):
-            zero_side_square = Square(0, 0, 0)
-            zero_radius_circle = Circle(0, 0, 0)
-            invalid_rectangle = Rectangle(0, 0, 0, 0)
-            invalid_triangle = Triangle(0, 0, 1, 1, 2, 2)
+        self.assertRaises(ValueError, Square, 0, 0, 0)
+        self.assertRaises(ValueError, Circle, 0, 0, 0)
+        self.assertRaises(ValueError, Rectangle, 0, 0, 0, 0)
+        self.assertRaises(ValueError, Triangle, 0, 0, 1, 1, 2, 2)
 
     def test_invalid_inputs(self):
-        with self.assertRaises(ValueError):
-            invalid_square = Square('a', 'b', {})
-            invalid_circle = Circle([], 'b', 'c')
+        self.assertRaises(ValueError, Square, 'a', 'b', {})
+        self.assertRaises(ValueError, Circle, [], 'b', 'c')
 
     def test_square_negative(self):
-        with self.assertRaises(ValueError):
-            negative_square = Square(0, 0, -1)
+        self.assertRaises(ValueError, Square, 0, 0, -1)
+        self.assertRaises(ValueError, Circle, 0, 0, -1)
 
 
 if __name__ == '__main__':
