@@ -2,6 +2,12 @@ import math
 
 
 class Shape:
+    def validate_input(self, input_list):
+        if all(isinstance(coord, (int, float)) for coord in input_list):
+            pass
+        else:
+            raise ValueError("Your input is not valid")
+
     def calculate_perimeter(self):
         pass
 
@@ -13,12 +19,10 @@ class Square(Shape):
     def __init__(self, top_right_x, top_right_y, side):
         if side == 0:
             raise ValueError("Side cannot be zero")
-        if all(isinstance(coord, (int, float)) for coord in [top_right_x, top_right_y, side]):
-            self.top_right_x = top_right_x
-            self.top_right_y = top_right_y
-            self.side = side
-        else:
-            raise ValueError("Your input is not valid")
+        self.validate_input([top_right_x, top_right_y, side])
+        self.top_right_x = top_right_x
+        self.top_right_y = top_right_y
+        self.side = side
 
     def calculate_perimeter(self):
         result = 4 * self.side
