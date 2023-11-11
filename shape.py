@@ -2,8 +2,8 @@ import math
 
 
 class Shape:
-    def validate_input(self, input_list):
-        if all(isinstance(coord, (int, float)) for coord in input_list):
+    def validate_input(self, *args):
+        if all(isinstance(coord, (int, float)) for coord in args):
             pass
         else:
             raise ValueError("Your input is not valid")
@@ -23,7 +23,7 @@ class Square(Shape):
         self.side = side
 
     def validate_input(self, top_right_x, top_right_y, side):
-        super().validate_input([top_right_x, top_right_y, side])
+        super().validate_input(top_right_x, top_right_y, side)
         if side == 0:
             raise ValueError("Side cannot be zero")
 
@@ -47,7 +47,7 @@ class Rectangle(Shape):
         self.validate_input(top_right_x, top_right_y, bottom_left_x, bottom_left_y)
 
     def validate_input(self, top_right_x, top_right_y, bottom_left_x, bottom_left_y):
-        super().validate_input([top_right_x, top_right_y, bottom_left_x, bottom_left_y])
+        super().validate_input(top_right_x, top_right_y, bottom_left_x, bottom_left_y)
         if self.height == 0 and self.width == 0:
             raise ValueError("Both height and width should not be zero")
 
@@ -69,7 +69,7 @@ class Circle(Shape):
         self.radius = radius
 
     def validate_input(self, center_x, center_y, radius):
-        super().validate_input([center_x, center_y, radius])
+        super().validate_input(center_x, center_y, radius)
         if radius == 0:
             raise ValueError("Radius cannot be zero")
 
@@ -98,7 +98,7 @@ class Triangle(Shape):
         self.validate_input(point_1_x, point_1_y, point_2_x, point_2_y, point_3_x, point_3_y)
 
     def validate_input(self, point_1_x, point_1_y, point_2_x, point_2_y, point_3_x, point_3_y):
-        super().validate_input([point_1_x, point_1_y, point_2_x, point_2_y, point_3_x, point_3_y])
+        super().validate_input(point_1_x, point_1_y, point_2_x, point_2_y, point_3_x, point_3_y)
         if self.side_1 + self.side_2 <= self.side_3 or self.side_2 + self.side_3 <= self.side_1 \
                 or self.side_1 + self.side_3 <= self.side_2:
             raise ValueError("Invalid sides for a triangle")
