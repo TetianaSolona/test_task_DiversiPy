@@ -17,12 +17,15 @@ class Shape:
 
 class Square(Shape):
     def __init__(self, top_right_x, top_right_y, side):
-        if side == 0:
-            raise ValueError("Side cannot be zero")
-        self.validate_input([top_right_x, top_right_y, side])
+        self.validate_input(top_right_x, top_right_y, side)
         self.top_right_x = top_right_x
         self.top_right_y = top_right_y
         self.side = side
+
+    def validate_input(self, top_right_x, top_right_y, side):
+        super().validate_input([top_right_x, top_right_y, side])
+        if side == 0:
+            raise ValueError("Side cannot be zero")
 
     def calculate_perimeter(self):
         result = 4 * self.side
@@ -65,7 +68,6 @@ class Circle(Shape):
         self.center_x = center_x
         self.center_y = center_y
         self.radius = radius
-
 
     def calculate_perimeter(self):
         result = 2 * math.pi * self.radius
