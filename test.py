@@ -60,6 +60,10 @@ class TestShapes(unittest.TestCase):
             invalid_square = Square('a', 'b', {})
             invalid_circle = Circle([], 'b', 'c')
 
+    def test_square_negative(self):
+        with self.assertRaises(ValueError):
+            negative_square = Square(0, 0, -1)
+
 
 if __name__ == '__main__':
     unittest.main()

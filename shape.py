@@ -24,8 +24,8 @@ class Square(Shape):
 
     def validate_input(self, top_right_x, top_right_y, side):
         super().validate_input(top_right_x, top_right_y, side)
-        if side == 0:
-            raise ValueError("Side cannot be zero")
+        if side == 0 or side < 0:
+            raise ValueError("Side cannot be zero or negative")
 
     def calculate_perimeter(self):
         result = 4 * self.side
