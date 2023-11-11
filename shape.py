@@ -1,16 +1,20 @@
 import math
+from abc import ABC, abstractmethod
 
 
-class Shape:
+class Shape(ABC):
+
     def validate_input(self, *args):
         if all(isinstance(coord, (int, float)) for coord in args):
             pass
         else:
             raise ValueError("Your input is not valid")
 
+    @abstractmethod
     def calculate_perimeter(self):
         pass
 
+    @abstractmethod
     def calculate_area(self):
         pass
 
