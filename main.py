@@ -9,4 +9,4 @@ if __name__ == '__main__':
     ]
 
     for shape in shapes:
-        print(f"{shape.__class__.__name__}: perimeter: {shape.calculate_perimeter()}, area: {shape.calculate_area()}")
+        print(f"{shape.__class__.__name__}: perimeter: {shape.perimeter()}, area: {shape.area()}")

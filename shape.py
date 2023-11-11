@@ -12,12 +12,12 @@ class Shape(ABC):
 
     @property
     @abstractmethod
-    def calculate_perimeter(self):
+    def perimeter(self):
         pass
 
     @property
     @abstractmethod
-    def calculate_area(self):
+    def area(self):
         pass
 
 
@@ -34,12 +34,12 @@ class Square(Shape):
             raise ValueError("Side cannot be zero or negative")
 
     @property
-    def calculate_perimeter(self):
+    def perimeter(self):
         result = 4 * self.side
         return round(result, 2)
 
     @property
-    def calculate_area(self):
+    def area(self):
         result = self.side * self.side
         return round(result, 2)
 
@@ -60,12 +60,12 @@ class Rectangle(Shape):
             raise ValueError("Both height and width should not be zero")
 
     @property
-    def calculate_perimeter(self):
+    def perimeter(self):
         result = 2 * (self.height + self.width)
         return round(result, 2)
 
     @property
-    def calculate_area(self):
+    def area(self):
         result = self.height * self.width
         return round(result, 2)
 
@@ -84,12 +84,12 @@ class Circle(Shape):
             raise ValueError("Radius cannot be zero or negative")
 
     @property
-    def calculate_perimeter(self):
+    def perimeter(self):
         result = 2 * math.pi * self.radius
         return round(result, 2)
 
     @property
-    def calculate_area(self):
+    def area(self):
         result = math.pi * (self.radius ** 2)
         return round(result, 2)
 
@@ -116,13 +116,13 @@ class Triangle(Shape):
             raise ValueError("Invalid sides for a triangle")
 
     @property
-    def calculate_perimeter(self):
+    def perimeter(self):
         result = self.side_1 + self.side_2 + self.side_3
         return round(result, 2)
 
     @property
-    def calculate_area(self):
-        semi_perimeter = self.calculate_perimeter / 2
+    def area(self):
+        semi_perimeter = self.perimeter / 2
         result = math.sqrt(semi_perimeter * (semi_perimeter - self.side_1) * (semi_perimeter - self.side_2) * (
                 semi_perimeter - self.side_3))
         return round(result, 2)
